@@ -6,34 +6,24 @@ import axios from "axios";
 
 function App() {
 const [todos, setTodos] = useState([]);
-const api_url = "http://localhost:4000"
-// const addTodo=(todo) =>{
-//   setTodos((prev) => [...prev,todo])
-// }
+//  const api_url = "http://localhost:4000"
+const api_url = `https://todo-fullstack-app-8yq7.onrender.com`;
 const addTodo= async(todo) => {
   const res = await axios.post(`${api_url}/api/todos`, {data:todo});
   setTodos((prev) => [...prev, res.data.data]);
 };
-// const updateTodo=(_id, todo) =>{
-//   setTodos((prev) => prev.map((prevTodo) => (prevTodo._id === _id ? todo : prevTodo)))
-// }
+
 const updateTodo= async (_id, updatedTodo) => {
   const res = await axios.put(`${api_url}/api/todos/${_id}`,{data:updatedTodo});
 
   setTodos((prev) => prev.map((prevTodo) => (prevTodo._id === _id ? res.data.data : prevTodo)))
 };
-// const deleteTodo=(_id) =>{
-//   setTodos((prev) => prev.filter(each => (each._id !== _id)))
-// }
+
 const deleteTodo=async (_id) =>{
   await axios.delete(`${api_url}/api/todos/${_id}`);
   setTodos((prev) => prev.filter(each => (each._id !== _id)))
 }
-// const toggleComplete=(_id) =>{
-//   setTodos((prev) => prev.map(prevTodo => (prevTodo._id === _id ? 
-//     {...prevTodo, completed: !prevTodo.completed}  
-//     : prevTodo)))
-// }
+
 const toggleComplete = async(_id) => {
   const todo = todos.find((todo) => todo._id === _id);
 
@@ -46,16 +36,6 @@ useEffect(()=>{
     .catch(err => console.log(err));
 },[])
 
-// useEffect(() =>{
-//     const todos = JSON.parse(localStorage.getItem("todos"));
-//     if(todos && todos.length > 0){
-//       setTodos(todos);
-//     }
-// },[])
-
-// useEffect(()=>{
-//   localStorage.setItem("todos", JSON.stringify(todos));
-// },[todos])
 
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleComplete}}>

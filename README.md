@@ -9,4 +9,4 @@
   N - NodeJs - for backend
   
 # Google docs link 
-https://docs.google.com/document/d/1x6z08BKTPHoye3HZ_LuRc1sG4LgFOQCwF7vLR-kMJOI/edit?tab=t.0
+https://docs.google.com/document/d/1x6z08BKTPHoye3HZ_LuRc1sG4LgFOQCwF7vLR-kMJOI/edit?usp=sharing
